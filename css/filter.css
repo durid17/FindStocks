@@ -1,0 +1,47 @@
+.side-menu{
+	position: fixed;
+	background: var(--primary-color);
+	width: 250px;
+	height: 100%;
+	/* margin-top: var(--nav-height); */
+}
+
+.side-menu a{
+	display: block;
+	line-height: 60px;
+	color: white;
+	transition: 0.5s;
+	font-size: 20px;
+}
+
+.side-menu a:hover{
+	background: red;
+	padding-left: 20px;
+}
+
+#menu{
+	display: none;
+}
+
+.menu-bar{
+	float: left;
+	margin-top: 10px;
+	margin-left: 10px;
+	display: none;
+}
+
+@media (max-width: 1000px){
+	.side-menu{
+		width: 100%;
+		transition: all 0.5s;
+		right: 100%;
+	}
+
+	.menu-bar{
+		display: block;
+	}
+}
+
+#menu:checked ~ .side-menu{
+	right: 0%;
+}
