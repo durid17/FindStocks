@@ -1,16 +1,25 @@
 nav {
-	height: var(--nav-height);
-	background: var(--nav-color);
+  height: var(--nav-height);
+  background: var(--nav-color);
 }
 
-nav .logo{
-	top: 7px;
-	position: absolute;
-	left: 10%;
+.topnav-left {
+  height: inherit;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:20px;
+  gap: 15px;
 }
 
-nav ul{
-	display: flex;
+nav .image-container {
+  display: flex;
+  justify-content: center;
+}
+
+nav ul {
+  display: flex;
   list-style: none;
   width: 50%;
   height: 100%;
@@ -19,29 +28,25 @@ nav ul{
   margin-left: auto;
 }
 
-nav ul li a{
-	color: white;
-	font-size: 18px;
+nav ul li a {
+  color: white;
+  font-size: 18px;
   text-transform: uppercase;
 }
 
-
 @media screen and (max-width: 1000px) {
-	.line {
+  .line {
     width: 30px;
     height: 3px;
     background: white;
     margin: 5px;
-	}
-	
-	nav {
+  }
+  nav {
     position: relative;
-	}
-	
-	nav .logo{
+  }
+  nav .logo {
     z-index: 2;
-	}
-
+  }
   .nav-hamburger {
     position: absolute;
     cursor: pointer;
@@ -49,22 +54,20 @@ nav ul li a{
     top: 50%;
     transform: translate(-5%, -50%);
     z-index: 2;
-	}
-	
+  }
   .nav-links {
     position: fixed;
     background: #2c3e50;
     height: 100vh;
     width: 100%;
-		flex-direction: column;
+    flex-direction: column;
     clip-path: circle(3000px at 90% -10%);
     -webkit-clip-path: circle(100px at 90% -10%);
     transition: all 1s ease-out;
     pointer-events: none;
     z-index: 1;
-	}
-	
-	.nav-links.open {
+  }
+  .nav-links.open {
     clip-path: circle(3000px at 90% -10%);
     -webkit-clip-path: circle(3000px at 90% -10%);
     pointer-events: all;
