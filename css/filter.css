@@ -1,52 +1,117 @@
 .side-menu {
-	position: fixed;
-	background: var(--primary-color); 
-	background:#fff;
-	width: var(--side-menu-width);
-	height: 100%;
-	margin-left: var(--side-menu-left-padding);
-	top: calc(var(--nav-height) + var(--margin-from-nav-var));
+	background: #fff;
+	border: 1px solid #ccc;
+	flex-basis: 25%;
 }
 
-.side-menu a {
-	display: block;
-	line-height: 60px;
-	/* color: white; */
-	transition: 0.5s;
-	font-size: 20px;
+.filter-menu{
+	padding: 10px;
 }
 
-.side-menu a:hover {
-	background: green;
-	padding-left: 20px;
+/* 
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
 
-#menu {
+input[type="number"] {
+	width: 55px;
+}
+
+.filter-form h5 {
+	padding-left: 5px;
+	font-weight: 700;
+}
+
+.filter-block {
+	padding-left: 1rem;
+	margin-bottom: 1.6rem;
+}
+
+.filter-block-content {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+}
+
+.filter-block-content input {
+	vertical-align: middle;
+	margin: 5px 10px 5px 0;
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+
+.filter-block-content label {
+	margin: 5px 10px 5px 0;
+}
+
+.filter-header-div {
+	padding: 5px;
+	text-align: center;
+}
+
+button {
+	background-color: #ddd;
+	border: none;
+	//color: white;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+} */
+
+
+
+
+/* The Modal (background) */
+.modal {
 	display: none;
+	/* Hidden by default */
+	position: fixed;
+	/* Stay in place */
+	z-index: 1;
+	/* Sit on top */
+	padding-top: 100px;
+	/* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%;
+	/* Full width */
+	height: 100%;
+	/* Full height */
+	overflow: auto;
+	/* Enable scroll if needed */
+	background-color: rgb(0, 0, 0);
+	/* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4);
+	/* Black w/ opacity */
 }
 
+/* Modal Content */
 
-.menu-bar {
-	visibility: hidden;
+.modal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
 }
 
-@media (max-width: 1000px) {
-	.side-menu {
-		width: 100%;
-		transition: all 0.5s;
-		top: auto;
-		right: 100%;
-	}
-	.menu-bar {
-		visibility: visible;	
-	}
-	main{
-		left: 30px;
-		right: 30px;
-		z-index: -1;
-	}
+/* The Close Button */
+
+.close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
 }
 
-#menu:checked ~ .side-menu{
-	right: 0%;
+.close:hover, .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
 }

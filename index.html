@@ -10,8 +10,6 @@
 
 <body>
 
-	<input type="checkbox" id="menu">
-
 	<nav>
 		<div class="nav-hamburger">
 			<div class="line"></div>
@@ -20,84 +18,123 @@
 		</div>
 
 		<div class="topnav-left">
-			<label for="menu" class="menu-bar">
-				<img src="./img/filter.png" width=50px height=50px>
-			</label>
-			<div class="image-container">
-				<img class="logo" src="./img/logo.png">
-			</div>
+			<a href="#" class="image-container">
+				<img class="logo" src="./img/logo.png" height="55px" width="85px">
+			</a>
 		</div>
-		
+
 		<ul class="nav-links">
-			<li><a class="nav-link" href="#">Find Stocks</a></li>
-			<li><a class="nav-link" href="#">About</a></li>
-			<li><a class="nav-link" href="#">Contact</a></li>
+			<li><a onclick="toggleHamburgerMenu()" class="nav-link" href="/" data-navigo>Find Stocks</a></li>
+			<li><a onclick="toggleHamburgerMenu()" class="nav-link" href="/about" data-navigo>About</a></li>
+			<li><a onclick="toggleHamburgerMenu()" class="nav-link" href="/contact" data-navigo>Contact</a></li>
 		</ul>
 
 	</nav>
 
+	<div id="main"></div>
 
-	<div class="side-menu">
-		<a href="#">text</a>
-		<a href="#">text</a>
-		<a href="#">text</a>
-		<a href="#">text</a>
+	<div id="myModal" class="modal">
 
-		<!-- <div class="filter-header-div">
-			<h2>ფილტრი</h2>
-		</div> -->
+		<!-- Modal content -->
+		<div class="modal-content">
+			<div class="filter-menu">
+				<div class="filter-header-div">
+					<h2>Filter</h2>
+				</div>
+
+				<div class="filter-block">
+					<h5 class="filter-block-title">Type</h5>
+					<label class="radio-container">All
+						<input type="checkbox" checked="checked" name="type">
+						<span class="checkmark"></span>
+					</label>
+					<label class="radio-container">Tech
+						<input type="checkbox" name="type">
+						<span class="checkmark"></span>
+					</label>
+					<label class="radio-container">Farma
+						<input type="checkbox" name="type">
+						<span class="checkmark"></span>
+					</label>
+					<label class="radio-container">Other
+						<input type="checkbox" name="type">
+						<span class="checkmark"></span>
+					</label>
+				</div>
+
+				<div class="filter-block">
+					<h5 class="filter-block-title">Prices</h5>
+					<div id="filter-price" class="filter-block-content">
+						<label for="from">from:</label>
+						<input type="number" id="from" name="from" placeholder="From">
+						<label for="to">to:</label>
+						<input type="number" id="to" name="to" placeholder="To">
+						<label for="$">$</label>
+					</div>
+				</div>
+
+				<div class="filter-block">
+					<label class="radio-container">Low to High
+						<input type="radio" checked="checked" name="sort-order">
+						<span class="checkmark"></span>
+					</label>
+					<label class="radio-container">High to Low
+						<input type="radio" name="sort-order">
+						<span class="checkmark"></span>
+					</label>
+
+				</div>
+
+				<div class="filter-block">
+					<h4>Filter by current value</h4>
+					<button>Filter by current value</button>
+				</div>
+
+
+				<div class="filter-block">
+				</div>
+
+				<div class="filter-block">
+					<h4>Filter by increase</h4>
+					<label class="radio-container">1D
+						<input type="radio" checked="checked" name="time-frame">
+						<span class="checkmark"></span>
+					</label>
+					<label class="radio-container">5D
+						<input type="radio" name="time-frame">
+						<span class="checkmark"></span>
+					</label>
+					<label class="radio-container">1M
+						<input type="radio" name="time-frame">
+						<span class="checkmark"></span>
+					</label>
+					<label class="radio-container">3M
+						<input type="radio" name="time-frame">
+						<span class="checkmark"></span>
+					</label>
+					<label class="radio-container">6M
+						<input type="radio" name="time-frame">
+						<span class="checkmark"></span>
+					</label>
+					<label class="radio-container">MAX
+						<input type="radio" name="time-frame">
+						<span class="checkmark"></span>
+					</label>
+
+
+					<button>Filter by increase</button>
+				</div>
+
+
+			</div>
+		</div>
 
 	</div>
-	<main>
-		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis quas dolor iusto quae vitae aut
-			ducimus
-			pariatur? Eum, eveniet obcaecati saepe aperiam, necessitatibus minus rerum, animi dolorem alias culpa
-			doloremque.</p>
 
-		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis quas dolor iusto quae vitae aut
-			ducimus
-			pariatur? Eum, eveniet obcaecati saepe aperiam, necessitatibus minus rerum, animi dolorem alias culpa
-			doloremque.</p>
-		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis quas dolor iusto quae vitae aut
-			ducimus
-			pariatur? Eum, eveniet obcaecati saepe aperiam, necessitatibus minus rerum, animi dolorem alias culpa
-			doloremque.</p>
-		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis quas dolor iusto quae vitae aut
-			ducimus
-			pariatur? Eum, eveniet obcaecati saepe aperiam, necessitatibus minus rerum, animi dolorem alias culpa
-			doloremque.</p>
-		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis quas dolor iusto quae vitae aut
-			ducimus
-			pariatur? Eum, eveniet obcaecati saepe aperiam, necessitatibus minus rerum, animi dolorem alias culpa
-			doloremque.</p>
-		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis quas dolor iusto quae vitae aut
-			ducimus
-			pariatur? Eum, eveniet obcaecati saepe aperiam, necessitatibus minus rerum, animi dolorem alias culpa
-			doloremque.</p>
-		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis quas dolor iusto quae vitae aut
-			ducimus
-			pariatur? Eum, eveniet obcaecati saepe aperiam, necessitatibus minus rerum, animi dolorem alias culpa
-			doloremque.</p>
-		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis quas dolor iusto quae vitae aut
-			ducimus
-			pariatur? Eum, eveniet obcaecati saepe aperiam, necessitatibus minus rerum, animi dolorem alias culpa
-			doloremque.</p>
-		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis quas dolor iusto quae vitae aut
-			ducimus
-			pariatur? Eum, eveniet obcaecati saepe aperiam, necessitatibus minus rerum, animi dolorem alias culpa
-			doloremque.</p>
-		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis quas dolor iusto quae vitae aut
-			ducimus
-			pariatur? Eum, eveniet obcaecati saepe aperiam, necessitatibus minus rerum, animi dolorem alias culpa
-			doloremque.</p>
-		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis quas dolor iusto quae vitae aut
-			ducimus
-			pariatur? Eum, eveniet obcaecati saepe aperiam, necessitatibus minus rerum, animi dolorem alias culpa
-			doloremque.</p>
-
-	</main>
-
+	<script src="https://unpkg.com/navigo@6.0.2/lib/navigo.min.js"></script>
 	<script src="js/main.js"></script>
 </body>
 
 </html>
+
+
