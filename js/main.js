@@ -210,7 +210,7 @@ router.on({
 
 
 function stockChoose(id) {
-	window.location.href = "/#/stock/" + id;
+	router.navigate('/stock/' + id);
 
 }
 
