@@ -1,5 +1,5 @@
 var filterMenuHTML =
-    `
+	`
 <div class="filter-menu">
 
 	<div class="filter-header-div">
@@ -12,7 +12,7 @@ var filterMenuHTML =
 			<input type="checkbox" checked="checked" name="type">
 			<span class="checkbox-checkmark"></span>
 		</label>
-		<label class="checkbox-container">Tech
+		<label class="checkbox-container">Technology
 			<input type="checkbox" name="type">
 			<span class="checkbox-checkmark"></span>
 		</label>
@@ -29,10 +29,12 @@ var filterMenuHTML =
 	<div class="filter-block">
 		<h2 class="filter-block-title">Prices</h2>
 		<div class="filter-block-content">
-			<label for="from">From:</label>
+			<div>
 			<input type="number" class="from" name="from" placeholder="From">
-			<label for="to">To:</label>
 			<input type="number" class="to" name="to" placeholder="To">
+			</div>
+			
+
 		</div>
 	</div>
 
@@ -50,7 +52,7 @@ var filterMenuHTML =
 
 	<div class="filter-block">
 		<h3>Filter by current value</h3>
-		<button>Filter by current value</button>
+		<button class="filter-by-value" >Filter by current value</button>
 	</div>
 
 	<div class="filter-block">
@@ -81,13 +83,13 @@ var filterMenuHTML =
 		</label>
 
 
-		<button>Filter by increase</button>
+		<button class="filter-by-increase">Filter by increase</button>
 	</div>
 </div>
 `
 
 var homeHTML =
-    `
+	`
 
 <div id="filter-modal" class="filter-modal">
 	<img id="filter-image" src="img/filter.png">
@@ -98,17 +100,32 @@ var homeHTML =
 
 
 <div id="side-menu" class="side-menu"> `
-    + filterMenuHTML +
-    `
+	+ filterMenuHTML +
+	`
 </div>
 
-<div class="main-content">
-
-	<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit</p>
-	<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit</p>
+<div id="main-content" class="main-content">
+	
+	
 
 </div>
 `
+
+
+{/* <a onclick="stockChoose(42)" id="stock_id_42" class="stock-block">
+		<img class="stocklist-image" src="img/google-logo.png" width="100px" height="100px">
+		<div class="stock-desc" width = "200px">
+			<h1 class="stock-name">Google</h1>
+			<h3 class="stock-desc-par">
+				<span style="font-weight: bold;">Industry: </span>
+				<span>Technology</span>
+			</h3>
+			<h3 class="stock-desc-par">
+				<span style="font-weight: bold;">Price: </span>
+				<span style="color:green;">3332.321$ + 15.04(0.5%)</span>
+			</h3>
+		</div>
+	</a> */}
 
 var contactHTML = `<h1>Contact<\h1>`
 var aboutHTML = `
@@ -121,49 +138,99 @@ var hash = '#';
 var router = new Navigo(root, useHash, hash);
 
 function toggleHamburgerMenu() {
-    var navLinks = document.querySelector(".nav-links");
-    var links = document.querySelectorAll(".nav-links li");
-    navLinks.classList.toggle("open");
-    links.forEach(link => {
-        link.classList.toggle("fade");
-    });
+	var navLinks = document.querySelector(".nav-links");
+	var links = document.querySelectorAll(".nav-links li");
+	navLinks.classList.toggle("open");
+	links.forEach(link => {
+		link.classList.toggle("fade");
+	});
 }
 
+function handleHome(){
+	document.getElementById('modal-content').innerHTML = filterMenuHTML;
+	document.getElementById('main').innerHTML = homeHTML;
+
+	fetch('data/stocks.json')
+		.then(response => response.json())
+		.then((result) => {
+			stockListHTML = ``
+			result.forEach(function (item, index) {
+				var color = 'grey';
+				var needPlus = '';
+				if (item['1D_change'] > 0) {
+					color = 'green';
+					needPlus = '+';
+				} else if (item['1D_change'] < 0) {
+					color = 'red';
+				}
+				stockListHTML +=
+					`<a onclick="stockChoose(` + item['id'] + `)" id="stock_id_` + item['id'] + `" class="stock-block">
+						<img class="stocklist-image" src="img/` + item['logo'] + `" width="100px" height="100px">
+						<div class="stock-desc" width = "200px">
+							<h1 class="stock-name">` + item['name'] + `</h1>
+							<h3 class="stock-desc-par">
+								<span style="font-weight: bold;">Industry: </span>
+								<span>` + item['industry'] + `</span>
+							</h3>
+							<h3 class="stock-desc-par">
+								<span style="font-weight: bold;">Price: </span>
+								<span style="color:` + color + `;">` + item['price'] + `$  ` + needPlus + item['1D_change'] + `(` + item['1D_perc_change'] + `%)</span>
+							</h3>
+						</div>
+					</a>`
+				console.log(item, index);
+			});
+			document.getElementById('main-content').innerHTML = stockListHTML;
+
+		});
+}
+
+function handleStock(id){
+	document.getElementById('main').innerHTML = '' + id;
+}
 
 router.on({
-    '/contact': function () {
-        document.getElementById('main').innerHTML = contactHTML;
-        console.log('contact');
-    },
-    '/about': function () {
-        document.getElementById('main').innerHTML = aboutHTML;
-        console.log('about');
-    },
-    '*': function () {
-        document.getElementById('modal-content').innerHTML = filterMenuHTML;
-        document.getElementById('main').innerHTML = homeHTML;
-        console.log('home');
-    },
-    '/stock/:id/': function (params) {
-        console.log(params.id)
-    }
+	'/contact': function () {
+		document.getElementById('main').innerHTML = contactHTML;
+		console.log('contact');
+	},
+	'/about': function () {
+		document.getElementById('main').innerHTML = aboutHTML;
+		console.log('about');
+	},
+	'*': function () {
+		handleHome();
+		console.log('home');
+	},
+	'/stock/:id/': function (params) {
+		handleStock(params.id);
+		console.log(params.id)
+	}
 }).resolve();
 
 
+function stockChoose(id) {
+	window.location.href = "/#/stock/" + id;
+
+}
+
 
 document.addEventListener('click', function (e) {
-    var modal = document.getElementById("myModal");
-    var navHamburger = document.querySelector(".nav-hamburger");
-    
-    if (e.target == navHamburger) {
-        toggleHamburgerMenu();
-    } else if (e.target.id == 'filter-modal' ||
-        e.target.id == 'filter-image' ||
-        e.target.id == 'filter-modal-text' ||
-        e.target.id == 'filter-modal-text-header') {
+	var modal = document.getElementById("myModal");
+	var navHamburger = document.querySelector(".nav-hamburger");
 
-        modal.style.display = "block";
-    } else if (e.target == modal) {
-        modal.style.display = "none";
-    }
+	if (e.target == navHamburger) {
+		toggleHamburgerMenu();
+	} else if (e.target.closest('#filter-modal')) {
+		modal.style.display = "block";
+	} else if (e.target == modal) {
+		modal.style.display = "none";
+	} else if (e.target.className == "filter-by-increase") {
+		console.log("filter-by-increase");
+	} else if (e.target.className == "filter-by-value") {
+		console.log("filter-by-value");
+	} else if (e.target.closest('#out')) {
+		console.log(e.target.closest('#out').id);
+		console.log('out');
+	}
 });
