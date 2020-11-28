@@ -50,6 +50,10 @@ body {
 	padding: 7px;
 }
 
+.filter-block-title{
+	margin-bottom: 5px;
+}
+
 .stock-block {
 	width: 47%;
 	margin: 5px;
@@ -68,6 +72,14 @@ body {
 
 .stock-block:hover {
 	transform: scale(1.02);
+}
+
+button{
+	border-radius: 11px;
+}
+
+button:hover {
+	transform: scale(1.05);
 }
 
 .stock-desc {

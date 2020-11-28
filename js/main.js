@@ -52,7 +52,7 @@ var filterSideMenuHTML =
 	</div>
 
 	<div class="filter-block">
-		<h3>Filter by current value</h3>
+		<h3 style="margin-bottom: 5px">Filter by current value</h3>
 		<button id="side-filter-by-value" class="filter-by-value" >Filter by current value</button>
 	</div>
 
@@ -133,7 +133,7 @@ var filterResponsiveMenuHTML =
 	</div>
 
 	<div class="filter-block">
-		<h3>Filter by current value</h3>
+		<h3 style="margin-bottom: 5px">Filter by current value</h3>
 		<button id="resp-filter-by-value" class="filter-by-value" >Filter by current value</button>
 	</div>
 
