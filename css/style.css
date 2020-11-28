@@ -43,7 +43,7 @@ body {
 	display: flex;
 	flex-flow: row wrap;
 	border-radius: 11px;
-	justify-content: space-around;
+	justify-content: space-between;
 }
 
 .stock-desc-par{
@@ -51,13 +51,13 @@ body {
 }
 
 .stock-block {
-	width: 45%;
+	width: 47%;
 	margin: 5px;
 	padding: 10px;
 	border: 1px solid #ccc;
 	background: #fff;
 	border-radius: 11px;
-	height: 300px;
+	height: 320px;
 	/* flex-basis: 45%; */
 	display: flex;
 	flex-direction: column;
