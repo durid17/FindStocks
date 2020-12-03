@@ -172,9 +172,8 @@ var homeHTML =
 </div>
 
 
-<div id="side-menu" class="side-menu"> `
-	+ filterSideMenuHTML +
-	`
+<div id="side-menu" class="side-menu"> 
+ ${filterSideMenuHTML}
 </div>
 
 <div id="main-content" class="main-content">
@@ -185,7 +184,39 @@ var homeHTML =
 </div>
 `
 
-var contactHTML = `<h1>Contact</h1>`
+var contactHTML = `
+<div class="container">
+  <div style="text-align:center">
+    <h2>Contact Us</h2>
+    <p>Swing by for a cup of coffee, or leave us a message:</p>
+  </div>
+  <div class="row">
+    <div class="column">
+      <img src="/img/background.jpg" style="width:100%">
+    </div>
+    <div class="column">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+        <label for="country">Country</label>
+        <select id="country" name="country">
+		<option value="usa">Georgia</option>
+          <option value="australia">Australia</option>
+          <option value="canada">Canada</option>
+          <option value="usa">USA</option>
+          <option value="usa">England</option>
+          <option value="usa">Spain</option>
+        </select>
+        <label for="subject">Subject</label>
+        <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
+		<input id="submit_question" type="submit" value="Submit">
+    </div>
+  </div>
+</div>
+
+
+`
 var aboutHTML = `<h1>About</h1>`
 
 var root = null;
@@ -203,8 +234,26 @@ function toggleHamburgerMenu() {
 	});
 }
 
+function getStockBlock(item, color, needPlus){
+	return `
+	<a onclick="stockChoose(${item['id']})" id="stock_id_${item['id']}" class="stock-block">
+		<img class="stocklist-image" src="img/${item['logo']}" width="100px" height="100px">
+		<div class="stock-desc" width = "200px">
+			<h1 class="stock-name">${item['name']}</h1>
+			<h3 class="stock-desc-par">
+				<span style="font-weight: bold;">Industry: </span>
+				<span>${item['industry']}</span>
+			</h3>
+			<h3 class="stock-desc-par">
+				<span style="font-weight: bold;">Price: </span>
+				<span style="color:${color};">${item['price']}$  ${needPlus + item['1D_change']}(${item['1D_perc_change']}%)</span>
+			</h3>
+		</div>
+	</a>
+	`
+}
+
 function handleHome() {
-	document.getElementById('modal-content').innerHTML = filterResponsiveMenuHTML;
 	document.getElementById('main-div').innerHTML = homeHTML;
 
 	fetch('data/stocks.json')
@@ -221,21 +270,7 @@ function handleHome() {
 				} else if (item['1D_change'] < 0) {
 					color = 'red';
 				}
-				stockListHTML +=
-					`<a onclick="stockChoose(` + item['id'] + `)" id="stock_id_` + item['id'] + `" class="stock-block">
-						<img class="stocklist-image" src="img/` + item['logo'] + `" width="100px" height="100px">
-						<div class="stock-desc" width = "200px">
-							<h1 class="stock-name">` + item['name'] + `</h1>
-							<h3 class="stock-desc-par">
-								<span style="font-weight: bold;">Industry: </span>
-								<span>` + item['industry'] + `</span>
-							</h3>
-							<h3 class="stock-desc-par">
-								<span style="font-weight: bold;">Price: </span>
-								<span style="color:` + color + `;">` + item['price'] + `$  ` + needPlus + item['1D_change'] + `(` + item['1D_perc_change'] + `%)</span>
-							</h3>
-						</div>
-					</a>`
+				stockListHTML += getStockBlock(item, color, needPlus);
 			});
 			document.getElementById('main-content').innerHTML = stockListHTML;
 
@@ -243,9 +278,28 @@ function handleHome() {
 }
 
 function handleStock(id) {
-	document.getElementById('main-div').innerHTML = '<h1>' + id + '</h1>';
+	document.getElementById('main-div').innerHTML = `<h1> ${id} </h1>`;
 }
 
+
+function getStockBlock(item, color, needPlus){
+	return `
+	<a onclick="stockChoose(${item['id']})" id="stock_id_${item['id']}" class="stock-block">
+		<img class="stocklist-image" src="img/${item['logo']}" width="100px" height="100px">
+		<div class="stock-desc" width = "200px">
+			<h1 class="stock-name">${item['name']}</h1>
+			<h3 class="stock-desc-par">
+				<span style="font-weight: bold;">Industry: </span>
+				<span>${item['industry']}</span>
+			</h3>
+			<h3 class="stock-desc-par">
+				<span style="font-weight: bold;">Price: </span>
+				<span style="color:${color};">${item['price']}$  ${needPlus + item['1D_change']}(${item['1D_perc_change']}%)</span>
+			</h3>
+		</div>
+	</a>
+	`
+}
 
 function handleFilterByValue(checkedBoxes, priceFrom, priceTo, sortOrder) {
 	fetch('data/stocks.json')
@@ -276,21 +330,8 @@ function handleFilterByValue(checkedBoxes, priceFrom, priceTo, sortOrder) {
 				} else if (item['1D_change'] < 0) {
 					color = 'red';
 				}
-				stockListHTML +=
-					`<a onclick="stockChoose(` + item['id'] + `)" id="stock_id_` + item['id'] + `" class="stock-block">
-						<img class="stocklist-image" src="img/` + item['logo'] + `" width="100px" height="100px">
-						<div class="stock-desc" width = "200px">
-							<h1 class="stock-name">` + item['name'] + `</h1>
-							<h3 class="stock-desc-par">
-								<span style="font-weight: bold;">Industry: </span>
-								<span>` + item['industry'] + `</span>
-							</h3>
-							<h3 class="stock-desc-par">
-								<span style="font-weight: bold;">Price: </span>
-								<span style="color:` + color + `;">` + item['price'] + `$  ` + needPlus + item['1D_change'] + `(` + item['1D_perc_change'] + `%)</span>
-							</h3>
-						</div>
-					</a>`
+				stockListHTML += getStockBlock(item, color, needPlus);
+					
 				console.log(item, index);
 			});
 			document.getElementById('main-content').innerHTML = stockListHTML;
@@ -324,21 +365,7 @@ function handleFilterByIncrease(checkedBoxes, priceFrom, priceTo, sortOrder, tim
 				} else if (item['1D_change'] < 0) {
 					color = 'red';
 				}
-				stockListHTML +=
-					`<a onclick="stockChoose(` + item['id'] + `)" id="stock_id_` + item['id'] + `" class="stock-block">
-						<img class="stocklist-image" src="img/` + item['logo'] + `" width="100px" height="100px">
-						<div class="stock-desc" width = "200px">
-							<h1 class="stock-name">` + item['name'] + `</h1>
-							<h3 class="stock-desc-par">
-								<span style="font-weight: bold;">Industry: </span>
-								<span>` + item['industry'] + `</span>
-							</h3>
-							<h3 class="stock-desc-par">
-								<span style="font-weight: bold;">Price: </span>
-								<span style="color:` + color + `;">` + item['price'] + `$  ` + needPlus + item['1D_change'] + `(` + item['1D_perc_change'] + `%)</span>
-							</h3>
-						</div>
-					</a>`
+				stockListHTML += getStockBlock(item, color, needPlus);
 				console.log(item, index);
 			});
 			document.getElementById('main-content').innerHTML = stockListHTML;
@@ -411,6 +438,7 @@ document.addEventListener('click', function (e) {
 	if (e.target.closest('.nav-hamburger')) {
 		toggleHamburgerMenu();
 	} else if (e.target.closest('#filter-modal')) {
+		document.getElementById('modal-content').innerHTML = filterResponsiveMenuHTML;
 		modal.style.display = "block";
 	} else if (e.target == modal) {
 		modal.style.display = "none";
@@ -457,6 +485,14 @@ document.addEventListener('click', function (e) {
 	} else if (e.target.closest('#out')) {
 		console.log(e.target.closest('#out').id);
 		console.log('out');
+	} else if(e.target.id == 'submit_question'){
+		document.getElementById('modal-content').innerHTML = `
+		<p>
+			Thank You.
+			Your opinion is very important to us!
+		<p>`;
+		modal.style.display = "block";
+		router.navigate('');
 	}
 
 });
