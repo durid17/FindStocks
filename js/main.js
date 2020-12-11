@@ -193,7 +193,7 @@ var contactHTML = `
   </div>
   <div class="contact-row">
     <div class="contact-column">
-      <img src="/img/background.jpg" style="width:100%">
+      <img src="img/background.jpg" style="width:100%">
     </div>
     <div class="contact-column">
         <label for="fname">First Name</label>
@@ -219,33 +219,6 @@ var contactHTML = `
 
 `
 
-// <div class="column">
-//     <div class="card">
-//       <img class="person-image" src="/img/buffett.jpg" alt="buffet">
-//       <div class="container">
-//         <h2>Warren Buffett</h2>
-//         <p class="title">CEO & Founder</p>
-//         <p>Stock market genius.</p>
-//         <p>warren@findstocks.com</p>
-//         <p><button class="button">Contact</button></p>
-//       </div>
-//     </div>
-//   </div>
-
-
-{/* <div class="column">
-    <div class="card">
-      <img class="person-image" src="/img/background.jpg" alt="Mike">
-      <div class="container">
-        <h2>Mike Ross</h2>
-        <p class="title">Art Director</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>mike@example.com</p>
-        <p><button class="button">Contact</button></p>
-      </div>
-    </div>
-  </div> */}
-
 
 
 var aboutHTML = `
@@ -253,12 +226,12 @@ var aboutHTML = `
   <h1>About Us</h1>
   <p>We can help you find best stock for you!</p>
 </div>
-  
+
 <h2 style="text-align:center">Our Team</h2>
 <div class="row">
 	<div class="column">
 		<div class="card">
-			<img class="person-image" src="/img/buffett.jpg" alt="John">
+			<img class="person-image" src="img/buffett.jpg" alt="John">
 			<div class="container">
 			<h2>Warren Buffett</h2>
 			<p class="title">Master</p>
@@ -270,7 +243,7 @@ var aboutHTML = `
 	</div>
 	<div class="column">
 		<div class="card">
-			<img class="person-image" src="/img/buffett.jpg" alt="John">
+			<img class="person-image" src="img/buffett.jpg" alt="John">
 			<div class="container">
 			<h2>Warren Buffett</h2>
 			<p class="title">Master</p>
@@ -282,7 +255,7 @@ var aboutHTML = `
 	</div>
 	<div class="column">
 		<div class="card">
-			<img class="person-image" src="/img/buffett.jpg" alt="John">
+			<img class="person-image" src="img/buffett.jpg" alt="John">
 			<div class="container">
 			<h2>Warren Buffett</h2>
 			<p class="title">Master</p>
@@ -294,7 +267,7 @@ var aboutHTML = `
 	</div>
 	<div class="column">
 		<div class="card">
-			<img class="person-image" src="/img/buffett.jpg" alt="John">
+			<img class="person-image" src="img/buffett.jpg" alt="John">
 			<div class="container">
 			<h2>Warren Buffett</h2>
 			<p class="title">Master</p>
