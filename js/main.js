@@ -494,7 +494,6 @@ function getCheckedRadio(radioName) {
 
 document.addEventListener('click', function (e) {
 	var modal = document.getElementById("myModal");
-	// var navHamburger = document.querySelector(".nav-hamburger");
 	if (e.target.closest('.nav-hamburger')) {
 		toggleHamburgerMenu();
 	} else if (e.target.closest('#filter-modal')) {
