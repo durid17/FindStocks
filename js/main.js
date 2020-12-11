@@ -185,16 +185,17 @@ var homeHTML =
 `
 
 var contactHTML = `
-<div class="container">
+<div class="contact-container">
   <div style="text-align:center">
     <h2>Contact Us</h2>
-    <p>Swing by for a cup of coffee, or leave us a message:</p>
+    <p>Email: FindStocks@gmail.com </p>
+    <p>Mobile: +995 595 99 99 99</p>
   </div>
-  <div class="row">
-    <div class="column">
+  <div class="contact-row">
+    <div class="contact-column">
       <img src="/img/background.jpg" style="width:100%">
     </div>
-    <div class="column">
+    <div class="contact-column">
         <label for="fname">First Name</label>
         <input type="text" id="fname" name="firstname" placeholder="Your name..">
         <label for="lname">Last Name</label>
@@ -217,7 +218,93 @@ var contactHTML = `
 
 
 `
-var aboutHTML = `<h1>About</h1>`
+
+// <div class="column">
+//     <div class="card">
+//       <img class="person-image" src="/img/buffett.jpg" alt="buffet">
+//       <div class="container">
+//         <h2>Warren Buffett</h2>
+//         <p class="title">CEO & Founder</p>
+//         <p>Stock market genius.</p>
+//         <p>warren@findstocks.com</p>
+//         <p><button class="button">Contact</button></p>
+//       </div>
+//     </div>
+//   </div>
+
+
+{/* <div class="column">
+    <div class="card">
+      <img class="person-image" src="/img/background.jpg" alt="Mike">
+      <div class="container">
+        <h2>Mike Ross</h2>
+        <p class="title">Art Director</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>mike@example.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div> */}
+
+
+
+var aboutHTML = `
+<div class="about-section">
+  <h1>About Us</h1>
+  <p>We can help you find best stock for you!</p>
+</div>
+  
+<h2 style="text-align:center">Our Team</h2>
+<div class="row">
+	<div class="column">
+		<div class="card">
+			<img class="person-image" src="/img/buffett.jpg" alt="John">
+			<div class="container">
+			<h2>Warren Buffett</h2>
+			<p class="title">Master</p>
+			<p>Stock market genius.</p>
+			<p>buffett@example.com</p>
+			<p><button class="button">Contact</button></p>
+			</div>
+		</div>
+	</div>
+	<div class="column">
+		<div class="card">
+			<img class="person-image" src="/img/buffett.jpg" alt="John">
+			<div class="container">
+			<h2>Warren Buffett</h2>
+			<p class="title">Master</p>
+			<p>Stock market genius.</p>
+			<p>buffett@example.com</p>
+			<p><button class="button">Contact</button></p>
+			</div>
+		</div>
+	</div>
+	<div class="column">
+		<div class="card">
+			<img class="person-image" src="/img/buffett.jpg" alt="John">
+			<div class="container">
+			<h2>Warren Buffett</h2>
+			<p class="title">Master</p>
+			<p>Stock market genius.</p>
+			<p>buffett@example.com</p>
+			<p><button class="button">Contact</button></p>
+			</div>
+		</div>
+	</div>
+	<div class="column">
+		<div class="card">
+			<img class="person-image" src="/img/buffett.jpg" alt="John">
+			<div class="container">
+			<h2>Warren Buffett</h2>
+			<p class="title">Master</p>
+			<p>Stock market genius.</p>
+			<p>buffett@example.com</p>
+			<p><button class="button">Contact</button></p>
+			</div>
+		</div>
+	</div>
+</div>`
 
 var root = null;
 var useHash = true;
@@ -234,7 +321,7 @@ function toggleHamburgerMenu() {
 	});
 }
 
-function getStockBlock(item, color, needPlus){
+function getStockBlock(item, color, needPlus) {
 	return `
 	<a onclick="stockChoose(${item['id']})" id="stock_id_${item['id']}" class="stock-block">
 		<img class="stocklist-image" src="img/${item['logo']}" width="100px" height="100px">
@@ -282,7 +369,7 @@ function handleStock(id) {
 }
 
 
-function getStockBlock(item, color, needPlus){
+function getStockBlock(item, color, needPlus) {
 	return `
 	<a onclick="stockChoose(${item['id']})" id="stock_id_${item['id']}" class="stock-block">
 		<img class="stocklist-image" src="img/${item['logo']}" width="100px" height="100px">
@@ -306,7 +393,7 @@ function handleFilterByValue(checkedBoxes, priceFrom, priceTo, sortOrder) {
 		.then(response => response.json())
 		.then((result) => {
 			stockListHTML = ``
-			
+
 			result = result.filter(function (a) {
 				if (priceFrom != null && priceFrom > a['price']) return false;
 				if (priceTo != null && priceTo < a['price']) return false;
@@ -314,7 +401,7 @@ function handleFilterByValue(checkedBoxes, priceFrom, priceTo, sortOrder) {
 			});
 
 			result.sort(function (a, b) {
-				if(sortOrder == 'Low to High'){
+				if (sortOrder == 'Low to High') {
 					return a['price'] > b['price'] ? 1 : -1;
 				}
 				return a['price'] < b['price'] ? 1 : -1;
@@ -331,7 +418,7 @@ function handleFilterByValue(checkedBoxes, priceFrom, priceTo, sortOrder) {
 					color = 'red';
 				}
 				stockListHTML += getStockBlock(item, color, needPlus);
-					
+
 				console.log(item, index);
 			});
 			document.getElementById('main-content').innerHTML = stockListHTML;
@@ -351,7 +438,7 @@ function handleFilterByIncrease(checkedBoxes, priceFrom, priceTo, sortOrder, tim
 				return checkedBoxes.includes(a['industry']);
 			});
 			result.sort(function (a, b) {
-				if(sortOrder == 'Low to High'){
+				if (sortOrder == 'Low to High') {
 					return a[timeFrame] > b[timeFrame] ? 1 : -1;
 				}
 				return a[timeFrame] < b[timeFrame] ? 1 : -1;
@@ -485,7 +572,7 @@ document.addEventListener('click', function (e) {
 	} else if (e.target.closest('#out')) {
 		console.log(e.target.closest('#out').id);
 		console.log('out');
-	} else if(e.target.id == 'submit_question'){
+	} else if (e.target.id == 'submit_question') {
 		document.getElementById('modal-content').innerHTML = `
 		<p>
 			Thank You.
