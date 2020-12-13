@@ -140,7 +140,6 @@ button:hover {
 	}
 }
 
-
 body {
 	font-family: Arial, Helvetica, sans-serif;
 }
@@ -262,16 +261,48 @@ input[type=submit]:hover {
 	background-color: #555;
 }
 
-
-.person-image{
+.person-image {
 	width: 340px;
 	height: 340px;
 }
 
 @media screen and (max-width: 1000px) {
-	.column{
+	.column {
 		flex-basis: 50%;
 	}
 }
 
+/*stock page*/
 
+.stock-div {
+	display: flex;
+	flex-direction: column;
+	margin: 50px;
+	border: 1px solid #ccc;
+	background: #fff;
+	border-radius: 11px;
+	padding: 15px;
+}
+
+.stock{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-items: center;
+	height: 300px;
+}
+
+.stock-desc{
+	text-align: center;
+}
+
+.stock-logo {
+	width: 200px;
+	height: 200px;
+}
+
+@media screen and (max-width: 800px) {
+	.stock-div{
+		margin: 10px;
+	}
+}

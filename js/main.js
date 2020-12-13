@@ -160,7 +160,6 @@ var filterResponsiveMenuHTML =
 </div>
 `
 
-
 var homeHTML =
 	`
 <div id="main">
@@ -176,11 +175,7 @@ var homeHTML =
  ${filterSideMenuHTML}
 </div>
 
-<div id="main-content" class="main-content">
-	
-	
-
-</div>
+<div id="main-content" class="main-content"></div>
 </div>
 `
 
@@ -218,8 +213,6 @@ var contactHTML = `
 
 
 `
-
-
 
 var aboutHTML = `
 <div class="about-section">
@@ -277,7 +270,8 @@ var aboutHTML = `
 			</div>
 		</div>
 	</div>
-</div>`
+</div>
+`
 
 var root = null;
 var useHash = true;
@@ -337,8 +331,55 @@ function handleHome() {
 		});
 }
 
+
+function getStock(id) {
+
+}
+
 function handleStock(id) {
-	document.getElementById('main-div').innerHTML = `<h1> ${id} </h1>`;
+	fetch('data/stocks.json')
+		.then(response => response.json())
+		.then((result) => {
+			for(var i = 0; i < result.length; i++){
+				var item = result[i];
+				if(item['id'] != id) {continue;}
+				var color = 'grey';
+				var needPlus = '';
+				if (item['1D_change'] > 0) {
+					color = 'green';
+					needPlus = '+';
+				} else if (item['1D_change'] < 0) {
+					color = 'red';
+				} 
+
+				document.getElementById('main-div').innerHTML = 
+				`
+					<div class="stock-div">
+						<div class="stock">
+							<div class="stock-logo-container">	
+								<img class="stock-logo" src="img/${item['logo']}" >
+							</div>
+							<div class="stock-desc">
+								<h1>Google</h1>
+								<h3 class="stock-desc-par">
+									<span style="font-weight: bold;">Industry: </span>
+									<span>Technology</span>
+								</h3>
+								<h3 class="stock-desc-par">
+									<span style="font-weight: bold;">Price: </span>
+									<span style="color:${color};">${item['price']}$  ${needPlus + item['1D_change']}(${item['1D_perc_change']}%)</span>
+								</h3>
+							</div>
+
+						</div>
+						<div class="news-div">
+
+						</div>
+					</div>
+				`;
+				return;
+			}
+		});
 }
 
 
@@ -546,10 +587,10 @@ document.addEventListener('click', function (e) {
 		console.log('out');
 	} else if (e.target.id == 'submit_question') {
 		document.getElementById('modal-content').innerHTML = `
-		<p>
+		<h1 style="height: 300px; text-align:center; margin-top:200px;" >
 			Thank You.
 			Your opinion is very important to us!
-		<p>`;
+		</h1>`;
 		modal.style.display = "block";
 		router.navigate('');
 	}
