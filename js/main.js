@@ -332,8 +332,52 @@ function handleHome() {
 }
 
 
-function getStock(id) {
+function getStock(item, colors,percChangeSign, timeFrame) {
+	return `
+	<div class="stock">
+		<div class="stock-logo-container">	
+			<img class="stock-logo" src="img/${item['logo']}" >
+		</div>
+		<div class="stock-desc">
+			<h1>Google</h1>
+			<h3 class="stock-desc-par">
+				<span style="font-weight: bold;">Industry: </span>
+				<span>Technology</span>
+			</h3>
+			<h3 class="stock-desc-par">
+				<span style="font-weight: bold;">Price: </span>
+				<span style="color:${colors[0]};">${item['price']}$  ${percChangeSign[0] + item['1D_change']}(${item['1D_perc_change']}%)</span>
+			</h3>
+			<div class="table-div">
+				<table>
+					<thead>
+						<tr>
+							<th>1 Day</th>
+							<th>5 Day</th>
+							<th>1 Month</th>
+							<th>3 Months</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="color:${colors[0]}">${percChangeSign[0] + item[timeFrame[0]+'_change']}$</td>
+							<td style="color:${colors[1]}">${percChangeSign[1] + item[timeFrame[1]+'_change']}$</td>
+							<td style="color:${colors[2]}">${percChangeSign[2] + item[timeFrame[2]+'_change']}$</td>
+							<td style="color:${colors[3]}">${percChangeSign[3] + item[timeFrame[3]+'_change']}$</td>
+						</tr>
+						<tr>
+							<td style="color:${colors[0]}">${percChangeSign[0] + item[timeFrame[0]+'_perc_change']}$</td>
+							<td style="color:${colors[1]}">${percChangeSign[1] + item[timeFrame[1]+'_perc_change']}$</td>
+							<td style="color:${colors[2]}">${percChangeSign[2] + item[timeFrame[2]+'_perc_change']}$</td>
+							<td style="color:${colors[3]}">${percChangeSign[3] + item[timeFrame[3]+'_perc_change']}%</td>									
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 
+	</div>
+	`;
 }
 
 function handleStock(id) {
@@ -343,37 +387,24 @@ function handleStock(id) {
 			for(var i = 0; i < result.length; i++){
 				var item = result[i];
 				if(item['id'] != id) {continue;}
-				var color = 'grey';
-				var needPlus = '';
-				if (item['1D_change'] > 0) {
-					color = 'green';
-					needPlus = '+';
-				} else if (item['1D_change'] < 0) {
-					color = 'red';
-				} 
-
+				var timeFrame = ['1D', '5D', '1M', '3M'];
+				var colors = ['grey', 'grey', 'grey', 'grey'];
+				var percChangeSign = ['', '', '', ''];
+				for(var j = 0; j < timeFrame.length; j++){
+					if (item[timeFrame[j] + '_change'] > 0) {
+						colors[j] = 'green';
+						percChangeSign[j] = '+';
+					} else if (item[timeFrame[j] + '_change'] < 0) {
+						colors[j] = 'red';
+					} 
+				}
+				
 				document.getElementById('main-div').innerHTML = 
 				`
 					<div class="stock-div">
-						<div class="stock">
-							<div class="stock-logo-container">	
-								<img class="stock-logo" src="img/${item['logo']}" >
-							</div>
-							<div class="stock-desc">
-								<h1>Google</h1>
-								<h3 class="stock-desc-par">
-									<span style="font-weight: bold;">Industry: </span>
-									<span>Technology</span>
-								</h3>
-								<h3 class="stock-desc-par">
-									<span style="font-weight: bold;">Price: </span>
-									<span style="color:${color};">${item['price']}$  ${needPlus + item['1D_change']}(${item['1D_perc_change']}%)</span>
-								</h3>
-							</div>
-
-						</div>
+						${getStock(item, colors, percChangeSign, timeFrame)}
 						<div class="news-div">
-
+							
 						</div>
 					</div>
 				`;

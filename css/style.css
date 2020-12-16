@@ -284,15 +284,15 @@ input[type=submit]:hover {
 	padding: 15px;
 }
 
-.stock{
+.stock {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-around;
 	align-items: center;
-	height: 300px;
+	min-height: 300px;
 }
 
-.stock-desc{
+.stock-desc {
 	text-align: center;
 }
 
@@ -302,7 +302,45 @@ input[type=submit]:hover {
 }
 
 @media screen and (max-width: 800px) {
-	.stock-div{
+	.stock-div {
 		margin: 10px;
 	}
+}
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+	border-radius: 7px 7px 0 0;
+	overflow: hidden;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 20px;
+}
+
+.table-div{
+	padding: 10px;
+}
+
+
+table thead tr {
+    background-color: var(--nav-color);
+    color: #ffffff;
+    text-align: left;
+	font-weight: bold;
+}
+
+table th,
+table td{
+	padding: 12px 15px;
+}
+
+table tbody tr:last-of-type {
+    border-bottom: 2px solid var(--nav-color);
+}
+tr:nth-child(even) {
+	background-color: #dddddd;
 }
