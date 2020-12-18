@@ -339,10 +339,10 @@ function getStock(item, colors,percChangeSign, timeFrame) {
 			<img class="stock-logo" src="img/${item['logo']}" >
 		</div>
 		<div class="stock-desc">
-			<h1>Google</h1>
+			<h1>${item['name']}</h1>
 			<h3 class="stock-desc-par">
 				<span style="font-weight: bold;">Industry: </span>
-				<span>Technology</span>
+				<span>${item['industry']}</span>
 			</h3>
 			<h3 class="stock-desc-par">
 				<span style="font-weight: bold;">Price: </span>
@@ -404,7 +404,50 @@ function handleStock(id) {
 					<div class="stock-div">
 						${getStock(item, colors, percChangeSign, timeFrame)}
 						<div class="news-div">
-							
+							<div class="news-header">
+								<h1> Find Important news regarding stock marker </h1>
+							</div>
+							<div class="news-list">
+								<a class="news-container" href="https://edition.cnn.com/">
+									<div class="news-img-container">
+										<img src="img/cnn.png" height="150px" width="150px">
+									</div>
+									<div class="news-desc">
+										<h2>Shocking news into Stock Busines!!!!</h2>
+										<p>FBI can confirm that there was a fraud committed by...</p>
+									</div>
+								</a>
+
+								<a class="news-container" href="https://www.foxnews.com/">
+									<div class="news-img-container">
+										<img src="img/foxnews.png" height="150px" width="150px">
+									</div>
+									<div class="news-desc">
+										<h2>Is Warren Buffett in trouble?</h2>
+										<p>Multiple sources have confirmed that Mr. Warren is under inversigation for...</p>
+									</div>
+								</a>
+
+								<a class="news-container" href="https://edition.cnn.com/">
+									<div class="news-img-container">
+										<img src="img/cnn.png" height="150px" width="150px">
+									</div>
+									<div class="news-desc">
+										<h2>Shocking news into Stock Busines!!!!</h2>
+										<p>FBI can confirm that there was a fraud committed by...</p>
+									</div>
+								</a>
+
+								<a class="news-container" href="https://www.foxnews.com/">
+									<div class="news-img-container">
+										<img src="img/foxnews.png" height="150px" width="150px">
+									</div>
+									<div class="news-desc">
+										<h2>Is Warren Buffett in trouble?</h2>
+										<p>Multiple sources have confirmed that Mr. Warren is under inversigation for...</p>
+									</div>
+								</a>
+							</div>
 						</div>
 					</div>
 				`;
