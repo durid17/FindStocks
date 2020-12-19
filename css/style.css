@@ -355,7 +355,7 @@ tr:nth-child(even) {
 
 .news-list{
 	display: flex;
-	flex-direction: column;
+	flex-flow: row wrap;
 }
 
 .news-img-container{
@@ -373,7 +373,9 @@ tr:nth-child(even) {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	margin-bottom: 10px;
+	margin: 10px;
+	flex: 1 1 0px;
+
 }
 
 .news-desc{
@@ -384,11 +386,10 @@ tr:nth-child(even) {
 }
 
 .news-header{
-	border-radius: 11px;
 	padding: 15px;
-	border: 1px solid #ccc;
-	background: #fff;
-	border-radius: 11px;
+	/* border: 1px solid #ccc; */
+	/* background: #fff; */
+	/* border-radius: 11px; */
 	margin-bottom: 15px;
 
 }

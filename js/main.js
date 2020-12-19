@@ -447,6 +447,51 @@ function handleStock(id) {
 										<p>Multiple sources have confirmed that Mr. Warren is under inversigation for...</p>
 									</div>
 								</a>
+								<a class="news-container" href="https://www.foxnews.com/">
+									<div class="news-img-container">
+										<img src="img/foxnews.png" height="150px" width="150px">
+									</div>
+									<div class="news-desc">
+										<h2>Is Warren Buffett in trouble?</h2>
+										<p>Multiple sources have confirmed that Mr. Warren is under inversigation for...</p>
+									</div>
+								</a>
+								<a class="news-container" href="https://www.foxnews.com/">
+									<div class="news-img-container">
+										<img src="img/foxnews.png" height="150px" width="150px">
+									</div>
+									<div class="news-desc">
+										<h2>Is Warren Buffett in trouble?</h2>
+										<p>Multiple sources have confirmed that Mr. Warren is under inversigation for...</p>
+									</div>
+								</a>
+								<a class="news-container" href="https://www.foxnews.com/">
+									<div class="news-img-container">
+										<img src="img/foxnews.png" height="150px" width="150px">
+									</div>
+									<div class="news-desc">
+										<h2>Is Warren Buffett in trouble?</h2>
+										<p>Multiple sources have confirmed that Mr. Warren is under inversigation for...</p>
+									</div>
+								</a>
+								<a class="news-container" href="https://www.foxnews.com/">
+									<div class="news-img-container">
+										<img src="img/foxnews.png" height="150px" width="150px">
+									</div>
+									<div class="news-desc">
+										<h2>Is Warren Buffett in trouble?</h2>
+										<p>Multiple sources have confirmed that Mr. Warren is under inversigation for...</p>
+									</div>
+								</a>
+								<a class="news-container" href="https://www.foxnews.com/">
+									<div class="news-img-container">
+										<img src="img/foxnews.png" height="150px" width="150px">
+									</div>
+									<div class="news-desc">
+										<h2>Is Warren Buffett in trouble?</h2>
+										<p>Multiple sources have confirmed that Mr. Warren is under inversigation for...</p>
+									</div>
+								</a>
 							</div>
 						</div>
 					</div>
