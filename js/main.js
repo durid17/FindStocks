@@ -354,8 +354,8 @@ function getStock(item, colors,percChangeSign, timeFrame) {
 						<tr>
 							<th>1 Day</th>
 							<th>5 Day</th>
-							<th>1 Month</th>
-							<th>3 Months</th>
+							<th>1 M</th>
+							<th>3 Ms</th>
 						</tr>
 					</thead>
 					<tbody>
