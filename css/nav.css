@@ -13,7 +13,7 @@ nav {
 	gap: 15px;
 }
 
-nav .image-container {
+nav .logo-container {
 	display: flex;
 	justify-content: center;
 }
